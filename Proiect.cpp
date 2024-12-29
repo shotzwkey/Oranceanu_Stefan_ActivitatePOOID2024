@@ -121,6 +121,47 @@ public:
 		}
 	}
 
+	Strada& operator=(const Strada& a) {
+		if (this->adresa != nullptr) {
+			delete[] this->adresa;
+			this->adresa = nullptr;
+		}
+
+		if (a.adresa != nullptr)
+		{
+			this->adresa = new char[strlen(a.adresa) + 1];
+			strcpy(this->adresa, a.adresa);
+		}
+		else
+		{
+			this->adresa = nullptr;
+		}
+
+		if (a.numar > 0)
+		{
+			this->numar = a.numar;
+		}
+		else
+		{
+			this->numar = 0;
+		}
+
+	}
+
+	bool operator>(const Strada& a) {
+		return this->numar > a.numar;
+	}
+
+	bool operator<(const Strada& a) {
+		return this->numar < a.numar;
+	}
+
+	bool operator==(int material) {
+		return this->material == material;
+	}
+
+	
+
 	~Strada() {
 		if (this->adresa != nullptr) {
 			delete[] this->adresa;
@@ -279,6 +320,45 @@ public:
 		Masina::autorizat = _autorizat;
 	}
 
+	Masina& operator=(const Masina& a) {
+		if (this->marca != nullptr) {
+			delete[] this->marca;
+			this->marca = nullptr;
+		}
+
+		if (a.marca != nullptr)
+		{
+			this->marca = new char[strlen(a.marca) + 1];
+			strcpy(this->marca, a.marca);
+		}
+		else
+		{
+			this->marca = nullptr;
+		}
+		if (a.kilometraj > 0)
+		{
+			this->kilometraj = a.kilometraj;
+		}
+		else
+		{
+			this->kilometraj = 0;
+		}
+
+	}
+
+	bool operator>(const Masina& a) {
+		return this->kilometraj > a.kilometraj;
+	}
+
+	bool operator<(const Masina& a) {
+		return this->kilometraj < a.kilometraj;
+	}
+
+	bool operator==(int seria) {
+		return this->seria == seria;
+	}
+
+
 	friend void daKmInapoiCuOValoare( Masina& a, int nrKm);
 };
 
@@ -433,6 +513,44 @@ public:
 		{
 			Casa::esteRezidential = _esteRezidential;
 
+		}
+
+		Casa& operator=(const Casa& a) {
+			if (this->locatie != nullptr) {
+				delete[] this->locatie;
+				this->locatie = nullptr;
+			}
+
+			if (a.locatie != nullptr)
+			{
+				this->locatie = new char[strlen(a.locatie) + 1];
+				strcpy(this->locatie, a.locatie);
+			}
+			else
+			{
+				this->locatie = nullptr;
+			}
+
+			if (a.mp2 > 0)
+			{
+				this->mp2 = a.mp2;
+			}
+			else
+			{
+				this->mp2 = 0;
+			}
+		}
+
+		bool operator>(const Casa& a) {
+			return this->mp2 > a.mp2;
+		}
+
+		bool operator<(const Casa& a) {
+			return this->mp2 < a.mp2;
+		}
+
+		bool operator==(int material) {
+			return this->material == material;
 		}
 };
 
